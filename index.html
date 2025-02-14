@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,30 +10,36 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="p-3 m-0 border-0 bd-example m-0 border-0">
-    <nav class="navbar navbar-expand-lg background: rgba(0, 0, 0, 0) !important">
+    <nav class="navbar navbar-expand-lg background: rgba(0, 0, 0, 0) !important navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#home">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             
             <span class="navbar-toggler-icon"></span>
+
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div style="text-align: left;" class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#about">About Bocchi</a>
+                  <a class="nav-link active" aria-current="page" href="#about">About Bocchi</a>
                 </li>
+
                 <li class="nav-item">
-                <a class="nav-link" href="#trailer">Trailer</a>
+                  <a class="nav-link active" aria-current="page" href="#trailer">Trailer</a>
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#register">Register</a>
+                  <a class="nav-link active" aria-current="page" href="#register">Register</a>
                 </li>
-            </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-                <button class="btn btn-outline-dark" type="submit">Search</button>
-            </form>
+
+              </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
+                  <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
             </div>
         </div>
     </nav>
@@ -42,7 +49,7 @@
             <div class="row">
                     <div class="col-12 col-md-6 col-lg-6 text-center"> 
                         <h1>Home</h1>
-                        <p>Ingin mencari anime santai namun anti-mainstream dan beda dari yang lain? Ayo tonton Bocchi the Rock</p>
+                        <p>Ingin mencari anime santai namun anti-mainstream dan beda dari yang lain? Ayo tonton Bocchi the Rock!</p>
                     </div>
 
                     <div  class="col-12 col-md-6 col-lg-6 text-center">  
@@ -56,7 +63,25 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h2 class="text-center">About Bocchi</h2>
-                <p class="text-center">Bocchi the Rock adalah anime komedi slice-of-life yang mengikuti perjalanan seorang gadis introvert dan canggung bernama Hitori "Bocchi" Gotou dalam mengejar impian bermusik bersama band-nya, sambil menghadapi kecemasan sosialnya dengan cara yang kocak dan relatable.</p>
+                <div class="slider-container">
+                  <div class="col-12 slide active">
+                    <p style="text-align: center;" >
+                      Bocchi the Rock adalah anime komedi slice-of-life yang mengikuti perjalanan seorang gadis introvert dan canggung bernama Hitori "Bocchi" Gotou dalam mengejar impian bermusik bersama band-nya, sambil menghadapi kecemasan sosialnya dengan cara yang kocak dan relatable.
+                    </p>
+                    <button id="next">Next</button>
+                  </div>
+                  <div class="slide">
+                    <p style="text-align: center;" >
+                      Bersama dengan Goto, Nijika, Kita, Ryo, dan karakter lain yang tidak kalah seru dan memiliki nilai masing-masing nikmati keseharian absurd "Kessoku Band" yang lucu dengan kualitas musik yang tidak kalah dari musisi lainnya. 
+                    </p>
+                      <button id="prev">Previous</button>
+                  </div>
+                  
+              </div>
+            </div>
+            <div>
+              
+              
             </div>
         </div>
         
@@ -169,5 +194,43 @@
             
         </div>
     </section>
+
+    <script>
+
+      const slides = document.querySelectorAll(".slide");
+      const nextBtn = document.getElementById("next");
+      const prevBtn = document.getElementById("prev");
+      let currentIndex = 0;
+
+      function updateSlides() {
+          slides.forEach((slide, index) => {
+              slide.classList.remove("active", "prev");
+              if (index === currentIndex) {
+                  slide.classList.add("active");
+              } else if (index < currentIndex) {
+                  slide.classList.add("prev");
+              }
+          });
+      }
+
+      nextBtn.addEventListener("click", () => {
+          if (currentIndex < slides.length - 1) {
+              currentIndex++;
+              updateSlides();
+          }
+      });
+
+      prevBtn.addEventListener("click", () => {
+          if (currentIndex > 0) {
+              currentIndex--;
+              updateSlides();
+          }
+      });
+
+      // Set slide pertama sebagai aktif
+      updateSlides();
+
+    </script>
+
 </body>
 </html>
